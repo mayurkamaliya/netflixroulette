@@ -1,0 +1,21 @@
+/* searchform.css */
+.form-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .form-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 200px;
+    border-radius: 10px;
+  }
+  
+  .form-button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #f45464;
+    text-emphasis-color: inherit;
+  }

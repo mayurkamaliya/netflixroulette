@@ -1,0 +1,22 @@
+.counter-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .counter-button-inc {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: rgb(77, 198, 113);
+    cursor: pointer;
+  }
+  
+  .counter-button-dec {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    background-color: rgb(195, 94, 94);
+    cursor: pointer;
+  }

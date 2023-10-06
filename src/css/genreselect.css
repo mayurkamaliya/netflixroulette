@@ -1,0 +1,20 @@
+/* genreselect.css */
+.genre-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .genre-button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #2a332d;
+    color: white;
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  
+  .genre-button.selected {
+    background-color: green;
+  }
+  
