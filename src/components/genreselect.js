@@ -6,7 +6,7 @@ class GenreSelect extends React.Component {
     const { genres, selectedGenre, onSelect } = this.props;
 
     const genreButtons = genres.map((genre) => {
-      const buttonClass = `genre-button ${genre === selectedGenre ? 'selected' : ''}`;
+      const buttonClass = `genre-button`;
       return React.createElement(
         'button',
         {

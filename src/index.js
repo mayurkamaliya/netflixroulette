@@ -4,6 +4,7 @@ import Counter from './components/counter.js';
 import SearchForm from './components/searchform.js';
 import GenreSelect from './components/genreselect.js';
 import './index.css';
+import './css/header.css'
 
 class App extends React.Component {
   handleSearch = (query) => {
@@ -15,7 +16,7 @@ class App extends React.Component {
   };
 
   render() {
-    return React.createElement('div', null, 
+    return React.createElement('div', { className: 'div-container' }, 
       React.createElement(Counter, { initialValue: 0 }),
       React.createElement(SearchForm, {
         initialSearchQuery: 'What do you want to watch?',

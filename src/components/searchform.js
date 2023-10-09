@@ -24,6 +24,9 @@ class SearchForm extends React.Component {
   };
 
   render() {
+    const headerElement = React.createElement('p', {
+        className: 'header-element'
+    }, 'FIND YOUR MOVIE');
     const inputElement = React.createElement('input', {
       className: 'form-input',
       type: 'text',
@@ -38,6 +41,7 @@ class SearchForm extends React.Component {
     }, 'Search');
 
     const formContainer = React.createElement('div', { className: 'form-container' },
+      headerElement,
       inputElement,
       buttonElement
     );
