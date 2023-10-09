@@ -24,29 +24,21 @@ class SearchForm extends React.Component {
   };
 
   render() {
-    const headerElement = React.createElement('p', {
-        className: 'header-element'
-    }, 'FIND YOUR MOVIE');
-    const inputElement = React.createElement('input', {
-      className: 'form-input',
-      type: 'text',
-      value: this.state.searchQuery,
-      onChange: this.handleInputChange,
-      onKeyPress: this.handleKeyPress,
-    });
-
-    const buttonElement = React.createElement('button', {
-      className: 'form-button',
-      onClick: this.handleSearch,
-    }, 'Search');
-
-    const formContainer = React.createElement('div', { className: 'form-container' },
-      headerElement,
-      inputElement,
-      buttonElement
+    return (
+      <div className="form-container">
+        <p className="header-element">FIND YOUR MOVIE</p>
+        <input
+          className="form-input"
+          type="text"
+          value={this.state.searchQuery}
+          onChange={this.handleInputChange}
+          onKeyPress={this.handleKeyPress}
+        />
+        <button className="form-button" onClick={this.handleSearch}>
+          Search
+        </button>
+      </div>
     );
-
-    return formContainer;
   }
 }
 

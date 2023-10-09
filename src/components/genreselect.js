@@ -7,18 +7,18 @@ class GenreSelect extends React.Component {
 
     const genreButtons = genres.map((genre) => {
       const buttonClass = `${genre === selectedGenre ? 'red' : 'white'}`;
-      return React.createElement(
-        'button',
-        {
-          key: genre,
-          className: buttonClass,
-          onClick: () => onSelect(genre),
-        },
-        genre
+      return (
+        <button
+          key={genre}
+          className={buttonClass}
+          onClick={() => onSelect(genre)}
+        >
+          {genre}
+        </button>
       );
     });
 
-    return React.createElement('div', { className: 'genre-container' }, genreButtons);
+    return <div className="genre-container">{genreButtons}</div>;
   }
 }
 
