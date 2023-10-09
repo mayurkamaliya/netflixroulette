@@ -4,7 +4,7 @@
     padding-left: 200px;
   }
   
-  .genre-button {
+  .white {
     margin: 5px;
     padding: 10px;
     font-size: 23px;
@@ -12,6 +12,16 @@
     cursor: pointer;
     border: none;
     background-color: transparent;
-    transition: background-color 0.3s ease;
+    font-variant-caps: all-petite-caps;
+  }
+
+  .red {
+    margin: 5px;
+    padding: 10px;
+    font-size: 23px;
+    color: rgb(201, 47, 47);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
     font-variant-caps: all-petite-caps;
   }
