@@ -18,12 +18,12 @@ class Counter extends React.Component {
   };
 
   render() {
-    const counterContainer = 
+    const counterContainer =
       React.createElement('div', { className: 'counter-container' },
-      React.createElement('p', null, 'Counter Value: ' + this.state.counter),
-      React.createElement('button', { className: 'counter-button-dec', onClick: this.decrement }, 'Decrement'),
-      React.createElement('button', { className: 'counter-button-inc', onClick: this.increment }, 'Increment')
-    );
+        React.createElement('p', null, 'Counter Value: ' + this.state.counter),
+        React.createElement('button', { className: 'counter-button-dec', onClick: this.decrement }, 'Decrement'),
+        React.createElement('button', { className: 'counter-button-inc', onClick: this.increment }, 'Increment')
+      );
     return counterContainer;
   }
 }

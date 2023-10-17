@@ -1,5 +1,6 @@
 import React from 'react';
 import '../css/searchform.css';
+import { FIND_YOUR_MOVIE } from './literals';
 
 class SearchForm extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class SearchForm extends React.Component {
   render() {
     return (
       <div className="form-container">
-        <p className="header-element">FIND YOUR MOVIE</p>
+        <p className="header-element">{FIND_YOUR_MOVIE}</p>
         <input
           className="form-input"
           type="text"

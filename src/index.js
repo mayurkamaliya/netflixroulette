@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedgenre: null, 
+      selectedgenre: null,
     };
   }
 
@@ -25,7 +25,7 @@ class App extends React.Component {
 
   render() {
     const selectedgenre = this.state.selectedgenre;
-    return React.createElement('div', { className: 'div-container' }, 
+    return React.createElement('div', { className: 'div-container' },
       React.createElement(Counter, { initialValue: 0 }),
       React.createElement(SearchForm, {
         initialSearchQuery: 'What do you want to watch?',
