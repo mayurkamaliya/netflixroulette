@@ -4,6 +4,7 @@ import SearchForm from './components/searchform.js';
 import GenreSelect from './components/genreselect.js';
 import './index.css';
 import './css/header.css'
+import Footer from "./components/Footer/footer.js";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,17 +25,20 @@ class App extends React.Component {
 
   render() {
     const selectedgenre = this.state.selectedgenre;
-    return React.createElement('div', { className: 'div-container' },
+    return React.createElement(
+      "div",
+      { className: "div-container" },
       React.createElement(Counter, { initialValue: 0 }),
       React.createElement(SearchForm, {
-        initialSearchQuery: 'What do you want to watch?',
+        initialSearchQuery: "What do you want to watch?",
         onSearch: this.handleSearch,
       }),
       React.createElement(GenreSelect, {
-        genres: ['All', 'Documentry', 'Comedy', 'Horror', 'Crime'],
+        genres: ["All", "Documentry", "Comedy", "Horror", "Crime"],
         selectedGenre: selectedgenre,
-        onSelect: this.handleGenreSelect
-      })
+        onSelect: this.handleGenreSelect,
+      }),
+      <Footer />
     );
   }
 }
