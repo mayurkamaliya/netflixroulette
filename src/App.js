@@ -1,10 +1,10 @@
 import React from 'react';
-import Counter from './components/counter.js';
-import SearchForm from './components/searchform.js';
-import GenreSelect from './components/genreselect.js';
-import './index.css';
-import './css/header.css'
-import Footer from "./components/Footer/footer.js";
+import Counter from "./components/Counter/counter";
+import SearchForm from "./components/SearchForm/searchform";
+import GenreSelect from "./components/GenreSelect/genreselect";
+import "./index.css";
+import "./components/Header/header.css";
+import MoviesList from "./components/MoviesList/movieslist";
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +38,9 @@ class App extends React.Component {
         selectedGenre: selectedgenre,
         onSelect: this.handleGenreSelect,
       }),
-      <Footer />
+      <br />,
+      <MoviesList />,
+      <br />
     );
   }
 }

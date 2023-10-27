@@ -1,12 +1,12 @@
-import React from 'react';
-import '../css/searchform.css';
-import { FIND_YOUR_MOVIE } from './literals';
+import React from "react";
+import "./searchform.css";
+import { FIND_YOUR_MOVIE } from "../literals";
 
 class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: this.props.initialSearchQuery || '',
+      searchQuery: this.props.initialSearchQuery || "",
     };
   }
 
@@ -19,7 +19,7 @@ class SearchForm extends React.Component {
   };
 
   handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       this.handleSearch();
     }
   };
