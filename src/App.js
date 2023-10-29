@@ -1,16 +1,17 @@
 import React from 'react';
 import Counter from "./components/Counter/counter";
 import SearchForm from "./components/SearchForm/searchform";
-import GenreSelect from "./components/GenreSelect/genreselect";
 import "./index.css";
 import "./components/Header/header.css";
 import MoviesList from "./components/Movies/MovieList";
+import SortAndGenreControl from "./components/SortAndGenreControl/SortAndGenreControl";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedgenre: null,
+      currentSort: "releaseDate",
     };
   }
 
@@ -23,8 +24,14 @@ class App extends React.Component {
     alert(`Selected genre: ${genre}`);
   };
 
+  handleSortChange = (sortOption) => {
+    this.setState({ currentSort: sortOption });
+  };
+
   render() {
     const selectedgenre = this.state.selectedgenre;
+    const currentSort = this.state.currentSort;
+
     return React.createElement(
       "div",
       { className: "div-container" },
@@ -33,10 +40,12 @@ class App extends React.Component {
         initialSearchQuery: "What do you want to watch?",
         onSearch: this.handleSearch,
       }),
-      React.createElement(GenreSelect, {
+      React.createElement(SortAndGenreControl, {
         genres: ["All", "Documentry", "Comedy", "Horror", "Crime"],
         selectedGenre: selectedgenre,
         onSelect: this.handleGenreSelect,
+        currentSort: currentSort,
+        onSortChange: this.handleSortChange,
       }),
       <br />,
       <MoviesList />,
