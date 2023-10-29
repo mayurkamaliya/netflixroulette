@@ -1,0 +1,30 @@
+@import 'variables';
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+}
+
+#root {
+    position: relative;
+    min-height: 100vh;
+    background-color: $black;
+
+    &.modal-active {
+        position: fixed;
+        width: 100vw;
+    }
+}
+
+button:focus {
+    border: none;
+}
+
+@import 'header';
+@import 'body';
+@import 'footer';
+@import 'modal';
+@import 'loading-spinner';

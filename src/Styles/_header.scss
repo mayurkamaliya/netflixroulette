@@ -1,0 +1,146 @@
+@import '_variables';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+header {
+    border: solid $grey;
+    border-width: 0 0 10px 0;
+    padding: 0.5rem 5rem 2rem 5rem;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('../Images/header-background.jpg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    font-family: 'Montserrat', sans-serif;
+
+    .header-contents {
+        max-width: 1800px;
+        margin: auto;
+    }
+
+    nav {
+
+        img {
+            float: right;
+            display: block;
+            height: 2rem;
+            cursor: pointer;
+        }
+
+        button {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            float: right;
+            display: block;
+            border: 0px;
+            padding: 0.8rem;
+            background-color: rgba(121, 121, 121, 0.8);
+            border-radius: 0.3rem;
+            color: $pink
+        }
+
+        p {
+            color: $pink;
+            font-size: 1.2rem;
+        }
+
+        b {
+            font-weight: 800;
+        }
+    }
+
+    .searchWrapper {
+        h1 {
+            font-weight: 200;
+            margin-bottom: 3rem;
+            color: $white;
+        }
+
+        padding: 2rem 4rem 2rem 4rem;
+        margin-bottom: 4rem;
+
+        .movie-search {
+            display: flex;
+
+            input {
+                font-size: 1.2rem;
+                background-color: rgb(66, 66, 66, 0.8);
+                font-family: 'Montserrat', sans-serif;
+                flex-grow: 1;
+                padding: 0.8rem;
+                border: none;
+                border-radius: 0.2rem;
+                color: $white;
+            }
+
+            button {
+                font-family: 'Montserrat', sans-serif;
+                background-color: $pink;
+                color: white;
+                width: 12rem;
+                margin-left: 1rem;
+                border-radius: 0.3rem;
+                border: none;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .film_body {
+        padding-top: 1rem;
+        color: $white;
+        display: inline-block;
+        display: flex;
+
+        article {
+            margin-left: 3rem;
+        }
+
+        p {
+            margin: 0.5rem 0
+        }
+
+        img {
+            height: 23rem;
+            display: block;
+        }
+
+        h1 {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            font-weight: 200;
+            margin-bottom: 0rem;
+            margin-top: 1rem;
+        }
+
+        h2 {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.3rem;
+            color: $pink;
+            font-weight: 200;
+            margin: 0.8rem 0;
+
+            span {
+                margin-left: 3rem;
+            }
+        }
+
+        #vote_container {
+            font-size: 1.5rem;
+            font-weight: 200;
+            color: greenyellow;
+            border: solid $white;
+            border-width: 1px;
+            border-radius: 2rem;
+            width: 4rem;
+            height: 4rem;
+            margin-left: 2.5rem;
+            min-width: 64px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
