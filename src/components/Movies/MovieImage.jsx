@@ -8,6 +8,7 @@ import MovieDetails from "./MovieDetails";
 class MovieImage extends Component {
   constructor(props) {
     super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   state = {
@@ -15,7 +16,19 @@ class MovieImage extends Component {
   };
 
   toggleModal = () => {
-    this.setState({ showModal: !this.state.showModal });
+    this.setState({ showModal: !this.state.showModal }, () => {
+      if (this.state.showModal) {
+        document.addEventListener('keydown', this.handleKeyPress);
+      } else {
+        document.removeEventListener('keydown', this.handleKeyPress);
+      }
+    });
+  };
+
+  handleKeyPress = (event) => {
+    if (event.keyCode === 27) {
+      this.setState({ showModal: false });
+    }
   };
 
   render() {
