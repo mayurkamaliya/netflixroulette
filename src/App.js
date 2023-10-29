@@ -4,7 +4,7 @@ import SearchForm from "./components/SearchForm/searchform";
 import GenreSelect from "./components/GenreSelect/genreselect";
 import "./index.css";
 import "./components/Header/header.css";
-import MoviesList from "./components/MoviesList/movieslist";
+import MoviesList from "./components/Movies/MovieList";
 
 class App extends React.Component {
   constructor(props) {

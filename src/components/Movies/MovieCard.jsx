@@ -8,7 +8,6 @@ class MovieCard extends Component {
   constructor(props) {
     super(props);
   }
-
   render() {
     return (
       <>
@@ -17,11 +16,11 @@ class MovieCard extends Component {
             toggleShowFilmBody={this.props.toggleShowFilmBody}
             img={this.props.pictureURL}
             filmTitle={this.props.name}
-            film={this.props._film}
+            film={this.props.film}
           />
         </div>
         <MovieInfo
-          description={this.props.descriptionShort}
+          description={this.props.tagline}
           name={this.props.name}
           year={this.props.year}
         />
