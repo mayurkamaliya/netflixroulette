@@ -33,7 +33,6 @@ class MovieImage extends Component {
 
   render() {
     const { img, filmTitle, film } = this.props;
-    console.log("In movieImage " + JSON.stringify(film));
     return (
       <div>
         <ReactImageFallback

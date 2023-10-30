@@ -28,9 +28,9 @@ MovieDetails.propTypes = {
   movieInfo: PropTypes.shape({
     pictureURL: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
+    year: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
-    duration: PropTypes.string.isRequired,
+    runtime: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
 };

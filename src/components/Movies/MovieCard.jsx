@@ -35,6 +35,6 @@ MovieCard.propTypes = {
   year: PropTypes.string.isRequired,
   pictureURL: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  _film: PropTypes.object.isRequired,
+  film: PropTypes.object.isRequired,
 };
 export default MovieCard;
