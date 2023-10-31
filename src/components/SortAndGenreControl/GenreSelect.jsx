@@ -1,12 +1,14 @@
-import React from 'react';
-import '../css/genreselect.css';
+import React from "react";
+import "./genreselect.css";
 
 class GenreSelect extends React.Component {
   render() {
     const { genres, selectedGenre, onSelect } = this.props;
 
     const genreButtons = genres.map((genre) => {
-      const buttonClass = `genre-button ${genre === selectedGenre ? 'red' : 'white'}`;
+      const buttonClass = `genre-button ${
+        genre === selectedGenre ? "red" : "white"
+      }`;
       return (
         <button
           key={genre}
