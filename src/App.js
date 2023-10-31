@@ -10,7 +10,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedgenre: null,
+      selectedGenre: null,
       currentSort: "releaseDate",
     };
   }
@@ -20,7 +20,7 @@ class App extends React.Component {
   };
 
   handleGenreSelect = (genre) => {
-    this.setState({ selectedgenre: genre });
+    this.setState({ selectedGenre: genre });
     alert(`Selected genre: ${genre}`);
   };
 
@@ -29,27 +29,27 @@ class App extends React.Component {
   };
 
   render() {
-    const selectedgenre = this.state.selectedgenre;
+    const selectedGenre = this.state.selectedGenre;
     const currentSort = this.state.currentSort;
 
-    return React.createElement(
-      "div",
-      { className: "div-container" },
-      React.createElement(Counter, { initialValue: 0 }),
-      React.createElement(SearchForm, {
-        initialSearchQuery: "What do you want to watch?",
-        onSearch: this.handleSearch,
-      }),
-      React.createElement(SortAndGenreControl, {
-        genres: ["All", "Documentry", "Comedy", "Horror", "Crime"],
-        selectedGenre: selectedgenre,
-        onSelect: this.handleGenreSelect,
-        currentSort: currentSort,
-        onSortChange: this.handleSortChange,
-      }),
-      <br />,
-      <MoviesList />,
-      <br />
+    return (
+      <div className="div-container">
+        <Counter initialValue={0} />
+        <SearchForm
+          initialSearchQuery="What do you want to watch?"
+          onSearch={this.handleSearch}
+        />
+        <SortAndGenreControl
+          genres={["All", "Documentry", "Comedy", "Horror", "Crime"]}
+          selectedGenre={selectedGenre}
+          onSelect={this.handleGenreSelect}
+          currentSort={currentSort}
+          onSortChange={this.handleSortChange}
+        />
+        <br />
+        <MoviesList />
+        <br />
+      </div>
     );
   }
 }

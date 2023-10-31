@@ -6,7 +6,7 @@ import "./sortAndGenreControl.css";
 
 class SortAndGenreControl extends React.Component {
   render() {
-    const { genres, selectedGenre, onSelectGenre, currentSort, onSortChange } =
+    const { genres, selectedGenre, onSelect, currentSort, onSortChange } =
       this.props;
 
     return (
@@ -14,7 +14,7 @@ class SortAndGenreControl extends React.Component {
         <GenreSelect
           genres={genres}
           selectedGenre={selectedGenre}
-          onSelect={onSelectGenre}
+          onSelect={onSelect}
         />
         <SortControl
           currentSelection={currentSort}
@@ -29,7 +29,7 @@ class SortAndGenreControl extends React.Component {
 SortAndGenreControl.propTypes = {
   genres: PropTypes.array.isRequired,
   selectedGenre: PropTypes.string.isRequired,
-  onSelectGenre: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
   currentSort: PropTypes.string.isRequired,
   onSortChange: PropTypes.func.isRequired,
 };
