@@ -4,7 +4,7 @@
     padding-left: 200px;
   }
   
-  .white {
+.genre-button.white {
     margin: 5px;
     padding: 10px;
     font-size: 23px;
@@ -15,7 +15,7 @@
     font-variant-caps: all-petite-caps;
   }
 
-  .red {
+.genre-button.red {
     margin: 5px;
     padding: 10px;
     font-size: 23px;

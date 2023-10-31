@@ -17,6 +17,10 @@ class Counter extends React.Component {
     this.setState((prevState) => ({ counter: prevState.counter - 1 }));
   };
 
+  getValue() {
+    return this.state.counter;
+  };
+
   render() {
     const counterContainer =
       React.createElement('div', { className: 'counter-container' },
