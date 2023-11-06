@@ -16,7 +16,7 @@ class MovieForm extends Component {
         runtime: "",
         overview: "",
       },
-      formType: ""
+      formType: "",
     };
   }
 
@@ -49,7 +49,7 @@ class MovieForm extends Component {
               Title
               <input
                 type="text"
-                name="title"
+                name="name"
                 value={this.state.formData.name}
                 onChange={this.handleInputChange}
               />
@@ -67,7 +67,7 @@ class MovieForm extends Component {
               Genre
               <input
                 type="text"
-                name="genre"
+                name="genres"
                 value={this.state.formData.genres}
                 onChange={this.handleInputChange}
               />
@@ -76,7 +76,7 @@ class MovieForm extends Component {
               Rating
               <input
                 type="text"
-                name="rating"
+                name="vote_average"
                 value={this.state.formData.vote_average}
                 onChange={this.handleInputChange}
               />
@@ -94,7 +94,7 @@ class MovieForm extends Component {
               Release Date
               <input
                 type="text"
-                name="releaseDate"
+                name="year"
                 value={this.state.formData.year}
                 onChange={this.handleInputChange}
               />
