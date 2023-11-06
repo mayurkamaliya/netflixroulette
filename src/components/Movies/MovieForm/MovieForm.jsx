@@ -123,3 +123,4 @@ class MovieForm extends Component {
 }
 
 export default MovieForm;
+

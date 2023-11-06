@@ -144,3 +144,4 @@ MovieImage.propTypes = {
 };
 
 export default MovieImage;
+
