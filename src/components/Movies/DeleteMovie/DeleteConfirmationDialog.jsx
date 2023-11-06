@@ -37,3 +37,4 @@ class DeleteConfirmationDialog extends Component {
 }
 
 export default DeleteConfirmationDialog;
+

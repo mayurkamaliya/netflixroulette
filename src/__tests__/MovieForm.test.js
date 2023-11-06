@@ -41,3 +41,4 @@ describe("MovieForm Component", () => {
     expect(titleInput.value).toBe("");
   });
 });
+
