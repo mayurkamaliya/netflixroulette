@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Dialog from "./Dialog";
 import MovieForm from "./MovieForm";
 import "./movie.css";
+import "./SuccessMessage/successMessage.css";
 
 class AddMovie extends Component {
   constructor(props) {
