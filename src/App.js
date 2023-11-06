@@ -5,6 +5,7 @@ import "./index.css";
 import "./components/Header/header.css";
 import MoviesList from "./components/Movies/MovieList";
 import SortAndGenreControl from "./components/SortAndGenreControl/SortAndGenreControl";
+import AddMovie from "./components/Movies/AddMovie";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class App extends React.Component {
     return (
       <div className="div-container">
         <Counter initialValue={0} />
+        <AddMovie />
         <SearchForm
           initialSearchQuery="What do you want to watch?"
           onSearch={this.handleSearch}
@@ -46,6 +48,7 @@ class App extends React.Component {
           currentSort={currentSort}
           onSortChange={this.handleSortChange}
         />
+
         <br />
         <MoviesList />
         <br />
