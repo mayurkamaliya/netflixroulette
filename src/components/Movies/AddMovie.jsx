@@ -8,6 +8,7 @@ class AddMovie extends Component {
     super(props);
     this.state = {
       isFormOpen: false,
+      showSuccessMessage: false,
     };
   }
 
@@ -20,7 +21,11 @@ class AddMovie extends Component {
   };
 
   handleFormSubmit = (formData) => {
+    this.setState({ showSuccessMessage: true });
     this.closeFormDialog();
+    setTimeout(() => {
+      this.setState({ showSuccessMessage: false });
+    }, 2000);
   };
 
   render() {
@@ -36,6 +41,13 @@ class AddMovie extends Component {
               onClose={this.closeFormDialog}
             />
           </Dialog>
+        )}
+          {this.state.showSuccessMessage && (
+          <div className="success-overlay">
+            <div className="success-dialog">
+              Movie added successfully!
+            </div>
+          </div>
         )}
       </div>
     );
