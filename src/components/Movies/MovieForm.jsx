@@ -8,14 +8,15 @@ class MovieForm extends Component {
 
     this.state = {
       formData: props.initialMovieInfo || {
-        title: "",
-        releaseDate: "",
+        name: "",
+        year: "",
         movieUrl: "",
-        rating: "",
-        genre: "",
+        vote_average: "",
+        genres: "",
         runtime: "",
         overview: "",
       },
+      formType: ""
     };
   }
 
@@ -39,7 +40,7 @@ class MovieForm extends Component {
     return (
       <div>
         <Dialog
-          title="Add Movie"
+          title="Add/Edit Movie"
           onClose={this.props.onClose}
           portalNode={this.props.portalNode}
         >
@@ -49,7 +50,7 @@ class MovieForm extends Component {
               <input
                 type="text"
                 name="title"
-                value={this.state.formData.title}
+                value={this.state.formData.name}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -58,7 +59,7 @@ class MovieForm extends Component {
               <input
                 type="text"
                 name="movieUrl"
-                value={this.state.formData.director}
+                value={this.state.formData.pictureURL}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -67,7 +68,7 @@ class MovieForm extends Component {
               <input
                 type="text"
                 name="genre"
-                value={this.state.formData.director}
+                value={this.state.formData.genres}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -76,7 +77,7 @@ class MovieForm extends Component {
               <input
                 type="text"
                 name="rating"
-                value={this.state.formData.director}
+                value={this.state.formData.vote_average}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -85,7 +86,7 @@ class MovieForm extends Component {
               <input
                 type="text"
                 name="runtime"
-                value={this.state.formData.director}
+                value={this.state.formData.runtime}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -94,7 +95,7 @@ class MovieForm extends Component {
               <input
                 type="text"
                 name="releaseDate"
-                value={this.state.formData.director}
+                value={this.state.formData.year}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -104,7 +105,7 @@ class MovieForm extends Component {
                 className="wider-input"
                 type="text"
                 name="overview"
-                value={this.state.formData.director}
+                value={this.state.formData.overview}
                 onChange={this.handleInputChange}
               />
             </label>

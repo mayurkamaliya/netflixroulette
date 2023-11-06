@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import Dialog from "./Dialog";
-import MovieForm from "./MovieForm";
-import "./movie.css";
-import "./SuccessMessage/successMessage.css";
+import Dialog from "../Dialog";
+import MovieForm from "../MovieForm";
+import "../movie.css";
+import "../SuccessMessage/successMessage.css";
 
-class AddMovie extends Component {
+class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,6 +12,10 @@ class AddMovie extends Component {
       showSuccessMessage: false,
     };
   }
+
+  closeFormDialog = () => {
+    this.setState({ isFormOpen: false });
+  };
 
   openFormDialog = () => {
     this.setState({ isFormOpen: true });
@@ -33,20 +37,19 @@ class AddMovie extends Component {
     return (
       <div className="movie-container">
         <button className="add-movie-button" onClick={this.openFormDialog}>
-          Add Movie
+          Edit Movie
         </button>
         {this.state.isFormOpen && (
-          <Dialog title="Add Movie" onClose={this.closeFormDialog}>
+          <Dialog title="Edit Movie" onClose={this.closeFormDialog}>
             <MovieForm
               onSubmit={this.handleFormSubmit}
               onClose={this.closeFormDialog}
-              formType="Add movie"
             />
           </Dialog>
         )}
         {this.state.showSuccessMessage && (
           <div className="success-overlay">
-            <div className="success-dialog">Movie added successfully!</div>
+            <div className="success-dialog">Movie edited successfully!</div>
           </div>
         )}
       </div>
@@ -54,4 +57,4 @@ class AddMovie extends Component {
   }
 }
 
-export default AddMovie;
+export default EditMovie;
