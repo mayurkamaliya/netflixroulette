@@ -3,9 +3,9 @@ import Counter from "./components/Counter/counter";
 import SearchForm from "./components/SearchForm/searchform";
 import "./index.css";
 import "./components/Header/header.css";
-import MoviesList from "./components/Movies/MovieList";
+import MoviesList from "./components/Movies/MovieList/MovieList";
 import SortAndGenreControl from "./components/SortAndGenreControl/SortAndGenreControl";
-import AddMovie from "./components/Movies/AddMovie";
+import AddMovie from "./components/Movies/AddMovie/AddMovie";
 
 class App extends React.Component {
   constructor(props) {

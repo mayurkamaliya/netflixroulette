@@ -1,6 +1,6 @@
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
-import MovieForm from "../components/Movies/MovieForm";
+import MovieForm from "../components/Movies/MovieForm/MovieForm";
 
 describe("MovieForm Component", () => {
   let onSubmitMock, onCloseMock, onResetMock;

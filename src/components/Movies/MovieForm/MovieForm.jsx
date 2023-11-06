@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Dialog from "./Dialog";
-import "./movie.css";
+import Dialog from "../Dialog/Dialog";
+import "./movieForm.css";
 
 class MovieForm extends Component {
   constructor(props) {
@@ -123,4 +123,3 @@ class MovieForm extends Component {
 }
 
 export default MovieForm;
-

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ReactImageFallback from "react-image-fallback";
-import placeholder from "../../images/film-poster-placeholder.png";
-import "./movie.css";
-import MovieDetails from "./MovieDetails";
-import DeleteConfirmationDialog from "./DeleteMovie/DeleteConfirmationDialog";
-import "./SuccessMessage/successMessage.css";
-import MovieForm from "./MovieForm";
+import placeholder from "../../../images/film-poster-placeholder.png";
+import "./movieImage.css";
+import MovieDetails from "../MovieDetails/MovieDetails";
+import DeleteConfirmationDialog from "../DeleteMovie/DeleteConfirmationDialog";
+import "../SuccessMessage/successMessage.css";
+import MovieForm from "../MovieForm/MovieForm";
 
 class MovieImage extends Component {
   constructor(props) {

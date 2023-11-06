@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Dialog from "./Dialog";
-import MovieForm from "./MovieForm";
-import "./movie.css";
-import "./SuccessMessage/successMessage.css";
+import Dialog from "../Dialog/Dialog";
+import MovieForm from "../MovieForm/MovieForm";
+import "../SuccessMessage/successMessage.css";
+import "./addMovie.css";
 
 class AddMovie extends Component {
   constructor(props) {
@@ -55,4 +55,3 @@ class AddMovie extends Component {
 }
 
 export default AddMovie;
-

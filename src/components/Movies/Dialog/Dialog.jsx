@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FocusTrap from "focus-trap-react";
-import "./movie.css";
+import "./dialog.css";
 
 class Dialog extends Component {
   render() {
@@ -30,4 +30,3 @@ Dialog.propTypes = {
 };
 
 export default Dialog;
-

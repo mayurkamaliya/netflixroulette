@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import "./movie.css";
+import "./movieInfo.css";
 
 class MovieInfo extends Component {
   render() {
