@@ -13,15 +13,16 @@ class App extends React.Component {
     this.state = {
       selectedGenre: 'All',
       currentSort: "release_date",
-      searchString: ""
+      searchString: "",
+      resetResults: false
     };
   }
 
   handleSearch = (query) => {
-    this.setState({ searchString: query }, () => {
-      const searchString = this.state.searchString;
-      console.log('handle search ' + searchString);
-    });
+    this.setState({ searchString: query });
+    if(!query){
+      this.setState({resetResults: true});
+    }
   };
 
   handleGenreSelect = (genre) => {
@@ -33,7 +34,8 @@ class App extends React.Component {
   };
 
   render() {
-    const { selectedGenre, currentSort, searchString } = this.state;
+    const { selectedGenre, currentSort, searchString, resetResults } =
+      this.state;
     return (
       <div className="div-container">
         <Counter initialValue={0} />
@@ -50,6 +52,7 @@ class App extends React.Component {
           selectedGenre={selectedGenre}
           currentSort={currentSort}
           searchString={searchString}
+          resetResults={resetResults}
         />
       </div>
     );
