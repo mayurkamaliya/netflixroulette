@@ -4,9 +4,8 @@ import "./movieDetails.css";
 
 class MovieDetails extends Component {
   render() {
-    const { poster_path, name, year, vote_average, runtime, overview } =
+    const { poster_path, name, release_date, vote_average, runtime, overview } =
       this.props.movieInfo;
-
     return (
       <div className="movie-details">
         <div className="movie-poster">
@@ -14,7 +13,7 @@ class MovieDetails extends Component {
         </div>
         <div className="movie-info">
           <h2>{name}</h2>
-          <p>Release Year: {year}</p>
+          <p>Release Year: {release_date}</p>
           <p>Rating: {vote_average}</p>
           <p>Duration: {runtime}</p>
           <p>{overview}</p>

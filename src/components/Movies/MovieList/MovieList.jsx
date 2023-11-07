@@ -8,18 +8,26 @@ const MoviesList = (props) => {
   const [limit] = useState(10);
   const [offset, setOffset] = useState(0);
 
-  const fetchMoviesData = async () => {
+  const fetchMoviesData = async (searchString) => {
     try {
       const url = new URL(GET_MOVIES_ENDPOINT);
       url.searchParams.append("sortBy", props.currentSort);
       url.searchParams.append("limit", limit);
       url.searchParams.append("offset", offset);
       url.searchParams.append("sortOrder", "desc");
-
+      if (searchString) {
+        console.log("search string " + searchString);
+        url.searchParams.append("search", searchString);
+        url.searchParams.append("searchBy", "title");
+      }
       const response = await fetch(url.toString());
       const moviesResponse = await response.json();
       const data = moviesResponse.data;
-      setMoviesResponse((prevMovies) => [...prevMovies, ...data]);
+      if (searchString) {
+        setMoviesResponse([...data]);
+      } else {
+        setMoviesResponse((prevMovies) => [...prevMovies, ...data]);
+      }
     } catch (error) {
       console.error("Error while fetching data: ", error);
     }
@@ -43,11 +51,11 @@ const MoviesList = (props) => {
 
   useEffect(() => {
     sortMovies(props);
-  }, [props]);
+  }, [props.currentSort]);
 
   useEffect(() => {
-    fetchMoviesData();
-  }, [offset]);
+    fetchMoviesData(props.searchString);
+  }, [offset, props.searchString]);
 
   return (
     <div>

@@ -6,7 +6,7 @@ class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchQuery: this.props.initialSearchQuery || "",
+      searchQuery: "",
     };
   }
 
@@ -31,6 +31,7 @@ class SearchForm extends React.Component {
         <input
           className="form-input"
           type="text"
+          placeholder="What do you want to search?"
           value={this.state.searchQuery}
           onChange={this.handleInputChange}
           onKeyPress={this.handleKeyPress}
