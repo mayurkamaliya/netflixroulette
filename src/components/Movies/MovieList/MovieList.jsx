@@ -30,17 +30,14 @@ const MoviesList = (props) => {
   };
 
   const sortMovies = (props) => {
-    console.log("inside sort movies " + JSON.stringify(props));
     if (props.currentSort === "release_date") {
       let data = moviesResponse.sort(
         (a, b) => new Date(b.release_date) - new Date(a.release_date)
       );
       setMoviesResponse([...data]);
-      console.log("after sort " + JSON.stringify(moviesResponse));
     } else if (props.currentSort === "title") {
       let data = moviesResponse.sort((a, b) => b.title.localeCompare(a.title));
       setMoviesResponse([...data]);
-      console.log("after sort " + JSON.stringify(moviesResponse));
     }
   };
 
