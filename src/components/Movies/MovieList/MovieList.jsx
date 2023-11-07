@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./movieList.css";
+import { GET_MOVIES_ENDPOINT } from "../../constants";
 
-const MoviesList = () => {
+const MoviesList = (props) => {
   const [moviesResponse, setMoviesResponse] = useState([]);
   const [limit] = useState(10);
-  const [sortBy] = useState("releaseDate");
   const [offset, setOffset] = useState(0);
 
   const fetchMoviesData = async () => {
     try {
-      const url = new URL("http://localhost:4000/movies");
-      url.searchParams.append("sortBy", sortBy);
+      const url = new URL(GET_MOVIES_ENDPOINT);
+      url.searchParams.append("sortBy", props.currentSort);
       url.searchParams.append("limit", limit);
       url.searchParams.append("offset", offset);
+      url.searchParams.append("sortOrder", "desc");
+
       const response = await fetch(url.toString());
       const moviesResponse = await response.json();
       const data = moviesResponse.data;
@@ -26,6 +28,25 @@ const MoviesList = () => {
   const handleLoadMore = () => {
     setOffset((prevOffset) => prevOffset + limit);
   };
+
+  const sortMovies = (props) => {
+    console.log("inside sort movies " + JSON.stringify(props));
+    if (props.currentSort === "release_date") {
+      let data = moviesResponse.sort(
+        (a, b) => new Date(b.release_date) - new Date(a.release_date)
+      );
+      setMoviesResponse([...data]);
+      console.log("after sort " + JSON.stringify(moviesResponse));
+    } else if (props.currentSort === "title") {
+      let data = moviesResponse.sort((a, b) => b.title.localeCompare(a.title));
+      setMoviesResponse([...data]);
+      console.log("after sort " + JSON.stringify(moviesResponse));
+    }
+  };
+
+  useEffect(() => {
+    sortMovies(props);
+  }, [props]);
 
   useEffect(() => {
     fetchMoviesData();

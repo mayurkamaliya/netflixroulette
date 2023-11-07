@@ -12,7 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       selectedGenre: 'All',
-      currentSort: "releaseDate",
+      currentSort: "release_date",
     };
   }
 
@@ -47,7 +47,7 @@ class App extends React.Component {
           currentSort={currentSort}
           onSortChange={this.handleSortChange}
         />
-        <MoviesList />
+        <MoviesList selectedGenre={selectedGenre} currentSort={currentSort} />
       </div>
     );
   }
