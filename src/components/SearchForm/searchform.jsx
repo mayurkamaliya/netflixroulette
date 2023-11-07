@@ -1,6 +1,6 @@
 import React from "react";
 import "./searchform.css";
-import { FIND_YOUR_MOVIE } from "../literals";
+import { FIND_YOUR_MOVIE } from "../constants";
 
 class SearchForm extends React.Component {
   constructor(props) {

@@ -1,35 +1,51 @@
-import React, { Component } from "react";
-import moviesData from "../../../data/movies.json";
+import React, { useEffect, useState } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./movieList.css";
+import { GET_MOVIES_ENDPOINT } from "../../constants";
 
-class MoviesList extends Component {
-  render() {
-    const renderingArray = moviesData.map((input) => {
-      const idCount = input.id;
-      return (
-        <article key={input.id} id={idCount} className="moviecard">
-          <MovieCard
-            id={input.id}
-            pictureURL={input.pictureURL}
-            tagline={input.tagline}
-            name={input.name}
-            year={input.year}
-            genres={input.genres}
-            overview={input.overview}
-            runtime={input.runtime}
-            film={input}
-          />
-        </article>
+const MoviesList = () => {
+  const [moviesResponse, setMoviesResponse] = useState(null);
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [sortBy] = useState("releaseDate");
+
+  const fetchMovieData = async () => {
+    try {
+      const response = await fetch(
+        GET_MOVIES_ENDPOINT +
+          "?sortBy=${sortBy}&offset=${offset}&limit=${limit}"
       );
-    });
+      const data = await response.json();
+      setMoviesResponse(data);
+    } catch (error) {
+      console.error("Error while fetching data: ", error);
+    }
+  };
 
-    return (
-      <>
-        <section className="movielist"> {renderingArray} </section>
-      </>
-    );
-  }
-}
+  useEffect(() => {
+    fetchMovieData();
+  }, [offset]);
+
+  return (
+    <section className="movielist">
+      {moviesResponse !== null &&
+        moviesResponse.data.map((input) => (
+          <article key={input.id} className="moviecard">
+            <MovieCard
+              id={input.id}
+              pictureURL={input.poster_path}
+              tagline={input.tagline}
+              name={input.title}
+              year={input.release_date}
+              genres={input.genres}
+              overview={input.overview}
+              runtime={input.runtime}
+              film={input}
+            />
+          </article>
+        ))}
+    </section>
+  );
+};
 
 export default MoviesList;

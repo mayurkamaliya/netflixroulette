@@ -11,7 +11,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedGenre: null,
+      selectedGenre: 'All',
       currentSort: "releaseDate",
     };
   }
@@ -22,7 +22,6 @@ class App extends React.Component {
 
   handleGenreSelect = (genre) => {
     this.setState({ selectedGenre: genre });
-    alert(`Selected genre: ${genre}`);
   };
 
   handleSortChange = (sortOption) => {
@@ -48,10 +47,7 @@ class App extends React.Component {
           currentSort={currentSort}
           onSortChange={this.handleSortChange}
         />
-
-        <br />
         <MoviesList />
-        <br />
       </div>
     );
   }

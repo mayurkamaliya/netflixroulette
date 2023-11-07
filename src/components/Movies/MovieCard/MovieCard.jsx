@@ -4,10 +4,9 @@ import MovieImage from "../MovieImage/MovieImage";
 import MovieInfo from "../MovieInfo/MovieInfo";
 
 class MovieCard extends Component {
-  constructor(props) {
-    super(props);
-  }
+
   render() {
+    console.log("in moviecard " + JSON.stringify(this.props));
     return (
       <>
         <div className="image-container">
