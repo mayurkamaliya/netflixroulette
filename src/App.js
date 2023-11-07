@@ -14,19 +14,16 @@ class App extends React.Component {
       selectedGenre: 'All',
       currentSort: "release_date",
       searchString: "",
-      resetResults: false
     };
   }
 
   handleSearch = (query) => {
     this.setState({ searchString: query });
-    if(!query){
-      this.setState({resetResults: true});
-    }
   };
 
   handleGenreSelect = (genre) => {
     this.setState({ selectedGenre: genre });
+    
   };
 
   handleSortChange = (sortOption) => {
@@ -42,7 +39,7 @@ class App extends React.Component {
         <AddMovie />
         <SearchForm onSearch={this.handleSearch} />
         <SortAndGenreControl
-          genres={["All", "Documentry", "Comedy", "Horror", "Crime"]}
+          genres={["All", "Action", "Comedy", "Horror", "Crime"]}
           selectedGenre={selectedGenre}
           onSelect={this.handleGenreSelect}
           currentSort={currentSort}
@@ -52,7 +49,6 @@ class App extends React.Component {
           selectedGenre={selectedGenre}
           currentSort={currentSort}
           searchString={searchString}
-          resetResults={resetResults}
         />
       </div>
     );

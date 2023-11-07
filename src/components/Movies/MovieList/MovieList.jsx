@@ -5,10 +5,11 @@ import { GET_MOVIES_ENDPOINT } from "../../constants";
 
 const MoviesList = (props) => {
   const [moviesResponse, setMoviesResponse] = useState([]);
-  const [limit] = useState(10);
+  const [limit] = useState(8);
   const [offset, setOffset] = useState(0);
+  const [totalMovies, setTotalMovies] = useState(0);
 
-  const fetchMoviesData = async (searchString, resetResults) => {
+  const fetchMoviesData = async (searchString, selectedGenre) => {
     try {
       const url = new URL(GET_MOVIES_ENDPOINT);
       url.searchParams.append("sortBy", props.currentSort);
@@ -19,42 +20,36 @@ const MoviesList = (props) => {
         url.searchParams.append("search", searchString);
         url.searchParams.append("searchBy", "title");
       }
+      if (selectedGenre && selectedGenre != "All") {
+        url.searchParams.append("search", selectedGenre);
+        url.searchParams.append("searchBy", "genres");
+      }
       const response = await fetch(url.toString());
       const moviesResponse = await response.json();
       const data = moviesResponse.data;
-      if (searchString || resetResults) {
-        setMoviesResponse([...data]);
-      } else {
-        setMoviesResponse((prevMovies) => [...prevMovies, ...data]);
-      }
+      setTotalMovies(moviesResponse.totalAmount);
+      setMoviesResponse([...data]);
     } catch (error) {
       console.error("Error while fetching data: ", error);
     }
   };
 
-  const handleLoadMore = () => {
-    setOffset((prevOffset) => prevOffset + limit);
-  };
+  const currentPage = Math.floor(offset / limit) + 1;
+  const totalPages = Math.ceil(totalMovies / limit);
 
-  const sortMovies = (props) => {
-    if (props.currentSort === "release_date") {
-      let data = moviesResponse.sort(
-        (a, b) => new Date(b.release_date) - new Date(a.release_date)
-      );
-      setMoviesResponse([...data]);
-    } else if (props.currentSort === "title") {
-      let data = moviesResponse.sort((a, b) => b.title.localeCompare(a.title));
-      setMoviesResponse([...data]);
+  useEffect(() => {
+    fetchMoviesData(props.searchString, props.selectedGenre);
+  }, [offset, props.searchString, props.selectedGenre, props.currentSort]);
+
+  const handlePreviousPage = () => {
+    if (offset - limit >= 0) {
+      setOffset(offset - limit);
     }
   };
 
-  useEffect(() => {
-    sortMovies(props);
-  }, [props.currentSort]);
-
-  useEffect(() => {
-    fetchMoviesData(props.searchString, props.resetResults);
-  }, [offset, props.searchString]);
+  const handleNextPage = () => {
+    setOffset(offset + limit);
+  };
 
   return (
     <div>
@@ -76,9 +71,23 @@ const MoviesList = (props) => {
             </article>
           ))}
       </section>
-      <div className="load-more-container">
-        <button onClick={handleLoadMore} className="load-more-button">
-          Load More
+      <div className="pagination">
+        <button
+          onClick={handlePreviousPage}
+          className="pagination-button"
+          disabled={offset === 0}
+        >
+          Previous
+        </button>
+        <div className="page-numbers">
+          Page {currentPage} of {totalPages}
+        </div>
+        <button
+          onClick={handleNextPage}
+          className="pagination-button"
+          disabled={offset + limit >= totalMovies}
+        >
+          Next
         </button>
       </div>
     </div>

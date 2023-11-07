@@ -14,28 +14,33 @@
     margin: 0 auto;
 }
 
-/* CSS for Load More button */
-.load-more-container {
+.pagination {
     display: flex;
     justify-content: center;
-    margin-top: 1px;
+    align-items: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
 }
 
-.load-more-button {
-    padding: 10px 20px;
-    border: 1px solid #876161;
-    border-radius: 4px;
-    background-color: #e1d2d2;
+.pagination-button {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #333;
+    background-color: #fff;
+    color: #333;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    color: black;
-    margin-bottom: 10px;
+    transition: all 0.3s;
+        margin-bottom: 20px;
 }
 
-.load-more-button:hover {
-    background-color: #bc6464;
+.pagination-button:hover {
+    background-color: #333;
+    color: #fff;
 }
 
-.load-more-button:focus {
-    outline: none;
+.page-numbers {
+    margin: 0 10px;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
 }
