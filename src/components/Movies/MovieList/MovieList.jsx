@@ -20,7 +20,7 @@ const MoviesList = (props) => {
         url.searchParams.append("search", searchString);
         url.searchParams.append("searchBy", "title");
       }
-      if (selectedGenre && selectedGenre != "All") {
+      if (selectedGenre && selectedGenre != "All" && !searchString) {
         url.searchParams.append("search", selectedGenre);
         url.searchParams.append("searchBy", "genres");
       }

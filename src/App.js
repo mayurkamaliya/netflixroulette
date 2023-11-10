@@ -31,7 +31,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { selectedGenre, currentSort, searchString, resetResults } =
+    const { selectedGenre, currentSort, searchString } =
       this.state;
     return (
       <div className="div-container">
