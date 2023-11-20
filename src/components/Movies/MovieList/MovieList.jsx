@@ -5,6 +5,7 @@ import { GET_MOVIES_ENDPOINT } from "../../constants";
 import MovieDetails from "../MovieDetails/MovieDetails";
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom'; 
 
 const MoviesList = (props) => {
   const [moviesResponse, setMoviesResponse] = useState([]);
@@ -14,6 +15,8 @@ const MoviesList = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [movieInfo, setMovieInfo] = useState({});
   const { movieIdParam } = useParams();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
 
   const toggleModal = () => {
     setShowModal((prevShowModal) => !prevShowModal);
@@ -28,7 +31,7 @@ const MoviesList = (props) => {
   const removePathParam = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const newPath = '/';
-    const newUrl = `${newPath}`;
+    const newUrl = `${newPath}?${urlParams.toString()}`;
     window.history.pushState({}, '', newUrl);
   }
 
@@ -109,6 +112,20 @@ const MoviesList = (props) => {
   const handleNextPage = () => {
     setOffset(offset + limit);
   };
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (props.searchString) params.set('query', props.searchString);
+    if (props.selectedGenre) params.set('genre', props.selectedGenre);
+    if (props.currentSort) params.set('sortBy', props.currentSort);
+    params.set('offset', offset.toString());
+    if (movieIdParam) {
+      navigate(`/${movieIdParam}?${params.toString()}`);
+    } else {
+      navigate(`/?${params.toString()}`);
+    }
+  }, [props.searchString, props.selectedGenre, props.currentSort, offset, navigate]);
+
 
   return (
     <div>
