@@ -6,6 +6,8 @@ import "./components/Header/header.css";
 import MoviesList from "./components/Movies/MovieList/MovieList";
 import SortAndGenreControl from "./components/SortAndGenreControl/SortAndGenreControl";
 import AddMovie from "./components/Movies/AddMovie/AddMovie";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -23,7 +25,7 @@ class App extends React.Component {
 
   handleGenreSelect = (genre) => {
     this.setState({ selectedGenre: genre });
-    
+
   };
 
   handleSortChange = (sortOption) => {
@@ -35,21 +37,30 @@ class App extends React.Component {
       this.state;
     return (
       <div className="div-container">
-        <Counter initialValue={0} />
-        <AddMovie />
-        <SearchForm onSearch={this.handleSearch} />
-        <SortAndGenreControl
-          genres={["All", "Action", "Comedy", "Horror", "Crime"]}
-          selectedGenre={selectedGenre}
-          onSelect={this.handleGenreSelect}
-          currentSort={currentSort}
-          onSortChange={this.handleSortChange}
-        />
-        <MoviesList
-          selectedGenre={selectedGenre}
-          currentSort={currentSort}
-          searchString={searchString}
-        />
+        <Router>
+          <Counter initialValue={0} />
+          <AddMovie />
+          <SearchForm onSearch={this.handleSearch} />
+          <SortAndGenreControl
+            genres={["All", "Action", "Comedy", "Horror", "Crime"]}
+            selectedGenre={selectedGenre}
+            onSelect={this.handleGenreSelect}
+            currentSort={currentSort}
+            onSortChange={this.handleSortChange}
+          />
+          <Routes>
+            <Route path='/' element={<MoviesList
+              selectedGenre={selectedGenre}
+              currentSort={currentSort}
+              searchString={searchString} />} />
+
+            <Route path='/:movieIdParam' element={<MoviesList
+              selectedGenre={selectedGenre}
+              currentSort={currentSort}
+              searchString={searchString} />} />
+
+          </Routes>
+        </Router>
       </div>
     );
   }
