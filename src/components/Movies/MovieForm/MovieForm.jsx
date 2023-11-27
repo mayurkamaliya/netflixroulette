@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Dialog from "../Dialog/Dialog";
 import "./movieForm.css";
-import PropTypes from 'prop-types';
 
 class MovieForm extends Component {
   constructor(props) {
