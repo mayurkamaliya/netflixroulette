@@ -48,7 +48,7 @@ const AddMovie = () => {
             <MovieForm
               onSubmit={handleFormSubmit}
               onClose={closeFormDialog}
-              formType="Add movie"
+              formType="add"
             />
           </Dialog>
         )}

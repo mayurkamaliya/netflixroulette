@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Dialog from "../Dialog/Dialog";
 import "./movieForm.css";
+import PropTypes from 'prop-types';
 
 class MovieForm extends Component {
   constructor(props) {
@@ -14,9 +15,10 @@ class MovieForm extends Component {
         vote_average: 0,
         genres: [],
         runtime: 0,
+        tagline: "",
         overview: "",
       },
-      formType: "",
+      formType: props.formType || "",
     };
   }
 
@@ -32,8 +34,11 @@ class MovieForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.onSubmit) {
-      const genresArray = this.state.formData.genres.split(',').map(genre => genre.trim());
-      this.state.formData.genres = genresArray;
+      console.log('form type ' + this.state.formType)
+      if (this.state.formType !== 'edit') {
+        const genresArray = this.state.formData.genres.split(',').map(genre => genre.trim());
+        this.state.formData.genres = genresArray;
+      }
       this.props.onSubmit(this.state.formData);
     }
   };
@@ -98,6 +103,15 @@ class MovieForm extends Component {
                 type="text"
                 name="release_date"
                 value={this.state.formData.release_date}
+                onChange={this.handleInputChange}
+              />
+            </label>
+            <label>
+              Tagline
+              <input
+                type="text"
+                name="tagline"
+                value={this.state.formData.tagline}
                 onChange={this.handleInputChange}
               />
             </label>
