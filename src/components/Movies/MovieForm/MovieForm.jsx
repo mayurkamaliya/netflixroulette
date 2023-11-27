@@ -8,8 +8,8 @@ class MovieForm extends Component {
 
     this.state = {
       formData: props.initialMovieInfo || {
-        name: "",
-        year: "",
+        title: "",
+        release_date: "",
         movieUrl: "",
         vote_average: "",
         genres: "",
@@ -49,8 +49,8 @@ class MovieForm extends Component {
               Title
               <input
                 type="text"
-                name="name"
-                value={this.state.formData.name}
+                name="title"
+                value={this.state.formData.title}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -94,8 +94,8 @@ class MovieForm extends Component {
               Release Date
               <input
                 type="text"
-                name="year"
-                value={this.state.formData.year}
+                name="release_date"
+                value={this.state.formData.release_date}
                 onChange={this.handleInputChange}
               />
             </label>
