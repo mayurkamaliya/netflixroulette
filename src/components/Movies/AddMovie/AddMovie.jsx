@@ -26,6 +26,7 @@ const AddMovie = () => {
   };
 
   const addMovie = async (formData) => {
+    console.log('in movie add ' + JSON.stringify(formData));
     await axios.post(MOVIES_BASE_URL, formData);
   } 
 
