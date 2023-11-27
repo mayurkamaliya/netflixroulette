@@ -10,10 +10,10 @@ class MovieForm extends Component {
       formData: props.initialMovieInfo || {
         title: "",
         release_date: "",
-        movieUrl: "",
-        vote_average: "",
-        genres: "",
-        runtime: "",
+        poster_path: "",
+        vote_average: 0,
+        genres: [],
+        runtime: 0,
         overview: "",
       },
       formType: "",
@@ -32,6 +32,8 @@ class MovieForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.onSubmit) {
+      const genresArray = this.state.formData.genres.split(',').map(genre => genre.trim());
+      this.state.formData.genres = genresArray;
       this.props.onSubmit(this.state.formData);
     }
   };
@@ -58,8 +60,8 @@ class MovieForm extends Component {
               Movie Url
               <input
                 type="text"
-                name="movieUrl"
-                value={this.state.formData.pictureURL}
+                name="poster_path"
+                value={this.state.formData.poster_path}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -75,7 +77,7 @@ class MovieForm extends Component {
             <label>
               Rating
               <input
-                type="text"
+                type="number"
                 name="vote_average"
                 value={this.state.formData.vote_average}
                 onChange={this.handleInputChange}
@@ -84,7 +86,7 @@ class MovieForm extends Component {
             <label>
               Runtime
               <input
-                type="text"
+                type="number"
                 name="runtime"
                 value={this.state.formData.runtime}
                 onChange={this.handleInputChange}

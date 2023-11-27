@@ -6,6 +6,7 @@ import "./addMovie.css";
 import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
 import axios from "axios";
+import { MOVIES_BASE_URL } from "../../constants";
 
 const AddMovie = () => {
 
@@ -24,12 +25,12 @@ const AddMovie = () => {
     setIsFormOpen(false);
   };
 
-  const addMovie = async () => {
-    const response = await axios.post();
+  const addMovie = async (formData) => {
+    await axios.post(MOVIES_BASE_URL, formData);
   } 
 
   const handleFormSubmit = (formData) => {
-    console.log('form data ' + JSON.stringify(formData));
+    addMovie(formData);
     setShowSuccessMessage(true);
     closeFormDialog();
     setTimeout(() => {
