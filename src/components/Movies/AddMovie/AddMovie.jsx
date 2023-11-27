@@ -3,56 +3,60 @@ import Dialog from "../Dialog/Dialog";
 import MovieForm from "../MovieForm/MovieForm";
 import "../SuccessMessage/successMessage.css";
 import "./addMovie.css";
+import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import axios from "axios";
 
-class AddMovie extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isFormOpen: false,
-      showSuccessMessage: false,
-    };
-  }
+const AddMovie = () => {
 
-  openFormDialog = () => {
-    this.setState({ isFormOpen: true });
+  const [isFormOpen, setIsFormOpen] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  const navigate = useNavigate();
+
+  const openFormDialog = () => {
+    setIsFormOpen(true);
+    navigate('/new');
   };
 
-  closeFormDialog = () => {
-    this.setState({ isFormOpen: false });
+  const closeFormDialog = () => {
+    navigate('/');
+    setIsFormOpen(false);
   };
 
-  handleFormSubmit = (formData) => {
-    this.setState({ showSuccessMessage: true });
-    this.closeFormDialog();
+  const addMovie = async () => {
+    const response = await axios.post();
+  } 
+
+  const handleFormSubmit = (formData) => {
+    console.log('form data ' + JSON.stringify(formData));
+    setShowSuccessMessage(true);
+    closeFormDialog();
     setTimeout(() => {
-      this.setState({ showSuccessMessage: false });
+      setShowSuccessMessage(false);
     }, 2000);
   };
 
-  render() {
     return (
       <div className="movie-container">
-        <button className="add-movie-button" onClick={this.openFormDialog}>
+        <button className="add-movie-button" onClick={openFormDialog}>
           Add Movie
         </button>
-        {this.state.isFormOpen && (
-          <Dialog title="Add Movie" onClose={this.closeFormDialog}>
+        {isFormOpen && (
+          <Dialog title="Add Movie" onClose={closeFormDialog}>
             <MovieForm
-              onSubmit={this.handleFormSubmit}
-              onClose={this.closeFormDialog}
+              onSubmit={handleFormSubmit}
+              onClose={closeFormDialog}
               formType="Add movie"
             />
           </Dialog>
         )}
-        {this.state.showSuccessMessage && (
+        {showSuccessMessage && (
           <div className="success-overlay">
             <div className="success-dialog">Movie added successfully!</div>
           </div>
         )}
       </div>
     );
-  }
 }
-
 export default AddMovie;
-
