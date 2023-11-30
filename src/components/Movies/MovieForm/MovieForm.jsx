@@ -7,15 +7,7 @@ class MovieForm extends Component {
     super(props);
 
     this.state = {
-      formData: props.initialMovieInfo || {
-        name: "",
-        year: "",
-        movieUrl: "",
-        vote_average: "",
-        genres: "",
-        runtime: "",
-        overview: "",
-      },
+      formData: props.initialMovieInfo || { ...MovieForm.defaultProps.initialMovieInfo },
       formType: "",
     };
   }
@@ -120,6 +112,18 @@ class MovieForm extends Component {
       </div>
     );
   }
+}
+
+MovieForm.defaultProps = {
+  initialMovieInfo: {
+    name: "",
+    year: "",
+    movieUrl: "",
+    vote_average: "",
+    genres: "",
+    runtime: "",
+    overview: "",
+  },
 }
 
 export default MovieForm;

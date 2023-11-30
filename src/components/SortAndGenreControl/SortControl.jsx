@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./sortControl.css";
+import { BLANK_STRING } from "../constants";
 
 class SortControl extends React.Component {
   handleSortChange = (event) => {
@@ -13,7 +14,7 @@ class SortControl extends React.Component {
     return (
       <div className="sort-container">
         <label className="label" htmlFor="sortSelect">
-          Sort by :{" "}
+          Sort by : {BLANK_STRING}
         </label>
         <select
           className="select"
