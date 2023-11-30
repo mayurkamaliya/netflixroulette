@@ -1,6 +1,6 @@
 import React from "react";
 import { getAllByRole, render } from "@testing-library/react";
-import MoviesList from "../components/Movies/MovieList";
+import MoviesList from "../components/Movies/MovieList/MovieList";
 import moviesData from "../data/movies.json";
 
 describe("MoviesList component", () => {

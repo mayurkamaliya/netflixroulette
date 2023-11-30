@@ -1,0 +1,15 @@
+.movielist {
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 18.5rem);
+}
+
+.movielist h2 {
+    margin: auto;
+}
+
+.moviecard {
+    width: min-content;
+    cursor: pointer;
+    margin: 0 auto;
+}

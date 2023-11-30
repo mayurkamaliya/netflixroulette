@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import moviesData from "../../data/movies.json";
-import MovieCard from "./MovieCard";
-import "./movie.css";
+import moviesData from "../../../data/movies.json";
+import MovieCard from "../MovieCard/MovieCard";
+import "./movieList.css";
 
 class MoviesList extends Component {
   render() {
@@ -26,7 +26,7 @@ class MoviesList extends Component {
 
     return (
       <>
-        <section className="movieslist"> {renderingArray} </section>
+        <section className="movielist"> {renderingArray} </section>
       </>
     );
   }

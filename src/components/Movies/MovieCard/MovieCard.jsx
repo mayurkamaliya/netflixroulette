@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import MovieImage from "./MovieImage";
-import MovieInfo from "./MovieInfo";
-import "./movie.css";
+import MovieImage from "../MovieImage/MovieImage";
+import MovieInfo from "../MovieInfo/MovieInfo";
 
 class MovieCard extends Component {
   constructor(props) {

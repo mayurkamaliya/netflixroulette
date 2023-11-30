@@ -1,6 +1,6 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import MovieInfo from "../components/Movies/MovieInfo";
+import MovieInfo from "../components/Movies/MovieInfo/MovieInfo";
 
 describe("MovieInfo Component", () => {
   const mockProps = {

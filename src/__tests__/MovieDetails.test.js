@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import MovieDetails from "../components/Movies/MovieDetails";
+import MovieDetails from "../components/Movies/MovieDetails/MovieDetails";
 
 describe("MovieDetails Component", () => {
   const movieInfo = {
