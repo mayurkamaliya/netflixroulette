@@ -4,9 +4,6 @@ import MovieImage from "../MovieImage/MovieImage";
 import MovieInfo from "../MovieInfo/MovieInfo";
 
 class MovieCard extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
     return (
       <>

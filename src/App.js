@@ -11,18 +11,19 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedGenre: null,
-      currentSort: "releaseDate",
+      selectedGenre: 'All',
+      currentSort: "release_date",
+      searchString: "",
     };
   }
 
   handleSearch = (query) => {
-    alert(`Searching for: ${query}`);
+    this.setState({ searchString: query });
   };
 
   handleGenreSelect = (genre) => {
     this.setState({ selectedGenre: genre });
-    alert(`Selected genre: ${genre}`);
+    
   };
 
   handleSortChange = (sortOption) => {
@@ -30,28 +31,25 @@ class App extends React.Component {
   };
 
   render() {
-    const selectedGenre = this.state.selectedGenre;
-    const currentSort = this.state.currentSort;
-
+    const { selectedGenre, currentSort, searchString } =
+      this.state;
     return (
       <div className="div-container">
         <Counter initialValue={0} />
         <AddMovie />
-        <SearchForm
-          initialSearchQuery="What do you want to watch?"
-          onSearch={this.handleSearch}
-        />
+        <SearchForm onSearch={this.handleSearch} />
         <SortAndGenreControl
-          genres={["All", "Documentry", "Comedy", "Horror", "Crime"]}
+          genres={["All", "Action", "Comedy", "Horror", "Crime"]}
           selectedGenre={selectedGenre}
           onSelect={this.handleGenreSelect}
           currentSort={currentSort}
           onSortChange={this.handleSortChange}
         />
-
-        <br />
-        <MoviesList />
-        <br />
+        <MoviesList
+          selectedGenre={selectedGenre}
+          currentSort={currentSort}
+          searchString={searchString}
+        />
       </div>
     );
   }

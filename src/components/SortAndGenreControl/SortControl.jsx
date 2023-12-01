@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import "./sortControl.css";
+import { BLANK_STRING } from "../constants";
 
 class SortControl extends React.Component {
   handleSortChange = (event) => {
@@ -10,14 +12,17 @@ class SortControl extends React.Component {
     const { currentSelection } = this.props;
 
     return (
-      <div>
-        <label htmlFor="sortSelect">Sort by : </label>
+      <div className="sort-container">
+        <label className="label" htmlFor="sortSelect">
+          Sort by : {BLANK_STRING}
+        </label>
         <select
+          className="select"
           id="sortSelect"
           value={currentSelection}
           onChange={this.handleSortChange}
         >
-          <option value="releaseDate">Release Date</option>
+          <option value="release_date">Release Date</option>
           <option value="title">Title</option>
         </select>
       </div>

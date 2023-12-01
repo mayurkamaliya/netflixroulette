@@ -59,7 +59,7 @@ class MovieImage extends Component {
     this.setState({ showOptions: !this.state.showOptions });
   };
 
-  handleConfirmDelete = (confirm) => {
+  handleConfirmDelete = () => {
     this.setState({ showConfirmationDialog: false });
     this.setState({ deleted: true });
     setTimeout(() => {
@@ -67,7 +67,7 @@ class MovieImage extends Component {
     }, 2000);
   };
 
-  handleEditSubmit = (formData) => {
+  handleEditSubmit = () => {
     this.setState({ edited: true });
     this.setState({ showEditDialog: false });
     setTimeout(() => {

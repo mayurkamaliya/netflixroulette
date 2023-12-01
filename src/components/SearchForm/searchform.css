@@ -10,14 +10,15 @@
   font-size: 20px;
 }
 
+
 .form-input {
   padding: 10px;
   font-size: 17px;
   width: 600px;
   border-radius: 50px;
-  background-color: rgb(82, 101, 124);
-  color: azure;
-  font-weight: 1;
+  background-color: rgb(16, 17, 18);
+    color: rgb(240, 255, 248);
+    font-weight: 2;
 }
 
 .form-button {
