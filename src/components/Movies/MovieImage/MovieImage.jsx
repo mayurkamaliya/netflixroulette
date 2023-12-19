@@ -7,7 +7,8 @@ import MovieDetails from "../MovieDetails/MovieDetails";
 import DeleteConfirmationDialog from "../DeleteMovie/DeleteConfirmationDialog";
 import "../SuccessMessage/successMessage.css";
 import MovieForm from "../MovieForm/MovieForm";
-import { useNavigate, useLocation } from 'react-router-dom';
+import { MOVIES_BASE_URL } from "../../constants";
+import axios from "axios";
 
 
 class MovieImage extends Component {
@@ -86,7 +87,13 @@ class MovieImage extends Component {
     }, 2000);
   };
 
-  handleEditSubmit = () => {
+  updateMovie = async (formData) => {
+    console.log('in edit movie ' + JSON.stringify(formData));
+    await axios.put(MOVIES_BASE_URL, formData);
+  }
+
+  handleEditSubmit = (formData) => {
+    this.updateMovie(formData);
     this.setState({ edited: true });
     this.setState({ showEditDialog: false });
     setTimeout(() => {
@@ -127,6 +134,7 @@ class MovieImage extends Component {
             initialMovieInfo={this.props.film}
             onClose={this.closeEditDialog}
             onSubmit={this.handleEditSubmit}
+            formType='edit'
           />
         )}
 
