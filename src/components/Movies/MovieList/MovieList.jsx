@@ -2,12 +2,57 @@ import React, { useEffect, useState, useMemo } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./movieList.css";
 import { GET_MOVIES_ENDPOINT } from "../../constants";
+import MovieDetails from "../MovieDetails/MovieDetails";
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom'; 
 
 const MoviesList = (props) => {
   const [moviesResponse, setMoviesResponse] = useState([]);
   const [limit] = useState(8);
   const [offset, setOffset] = useState(0);
   const [totalMovies, setTotalMovies] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [movieInfo, setMovieInfo] = useState({});
+  const { movieIdParam } = useParams();
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
+  const toggleModal = () => {
+    setShowModal((prevShowModal) => !prevShowModal);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Escape') {
+      setShowModal(false);
+    }
+  };
+
+  const removePathParam = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const newPath = '/';
+    const newUrl = `${newPath}?${urlParams.toString()}`;
+    window.history.pushState({}, '', newUrl);
+  }
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setShowModal(false);
+      }
+    };
+
+    if (showModal) {
+      document.addEventListener('keydown', handleKeyDown);
+    } else {
+      removePathParam();
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [showModal]);
 
   const fetchMoviesData = async (searchString, selectedGenre) => {
     try {
@@ -37,6 +82,23 @@ const MoviesList = (props) => {
   const currentPage = Math.floor(offset / limit) + 1;
   const totalPages = Math.ceil(totalMovies / limit);
 
+  const fetchMovieInfo = async () => {
+    if (movieIdParam) {
+      try {
+        const response = await axios.get(`http://localhost:4000/movies/${movieIdParam}`);
+        setMovieInfo(response.data);
+        setShowModal(true);
+      } catch (error) {
+        console.error('Error fetching movie details:', error);
+        setMovieInfo(null);
+      }
+    }
+  }
+
+  useEffect(() => {
+    fetchMovieInfo();
+  }, [movieIdParam]);
+
   useEffect(() => {
     fetchMoviesData(props.searchString, props.selectedGenre);
   }, [offset, props.searchString, props.selectedGenre, props.currentSort]);
@@ -55,8 +117,32 @@ const MoviesList = (props) => {
     };
   }, [offset, limit])
 
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (props.searchString) params.set('query', props.searchString);
+    if (props.selectedGenre) params.set('genre', props.selectedGenre);
+    if (props.currentSort) params.set('sortBy', props.currentSort);
+    params.set('offset', offset.toString());
+    if (movieIdParam) {
+      navigate(`/${movieIdParam}?${params.toString()}`);
+    } else {
+      navigate(`/?${params.toString()}`);
+    }
+  }, [props.searchString, props.selectedGenre, props.currentSort, offset, navigate]);
+
+
   return (
     <div>
+      {showModal && (
+        <div className="modal">
+          <div className="modal-content">
+            <span className="close" onClick={toggleModal}>
+              &times;
+            </span>
+            <MovieDetails movieInfo={movieInfo} />
+          </div>
+        </div>
+      )}
       <section className="movielist">
         {moviesResponse &&
           moviesResponse.map((input) => (
