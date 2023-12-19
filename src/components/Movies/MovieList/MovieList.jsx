@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 import "./movieList.css";
 import { MOVIES_BASE_URL } from "../../constants";
@@ -65,7 +65,7 @@ const MoviesList = (props) => {
         url.searchParams.append("search", searchString);
         url.searchParams.append("searchBy", "title");
       }
-      if (selectedGenre && selectedGenre != "All" && !searchString) {
+      if (selectedGenre && selectedGenre !== "All" && !searchString) {
         url.searchParams.append("search", selectedGenre);
         url.searchParams.append("searchBy", "genres");
       }
@@ -103,15 +103,19 @@ const MoviesList = (props) => {
     fetchMoviesData(props.searchString, props.selectedGenre);
   }, [offset, props.searchString, props.selectedGenre, props.currentSort]);
 
-  const handlePreviousPage = () => {
-    if (offset - limit >= 0) {
-      setOffset(offset - limit);
-    }
-  };
+  const handlePreviousPage = useMemo(() => {
+    return () => {
+      if (offset - limit >= 0) {
+        setOffset(offset - limit);
+      }
+    };
+  }, [offset, limit])
 
-  const handleNextPage = () => {
-    setOffset(offset + limit);
-  };
+  const handleNextPage = useMemo(() => {
+    return () => {
+      setOffset(offset + limit);
+    };
+  }, [offset, limit])
 
   useEffect(() => {
     const params = new URLSearchParams();
@@ -140,7 +144,7 @@ const MoviesList = (props) => {
         </div>
       )}
       <section className="movielist">
-        {moviesResponse !== null &&
+        {moviesResponse &&
           moviesResponse.map((input) => (
             <article key={input.id} className="moviecard">
               <MovieCard
